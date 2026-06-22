@@ -562,18 +562,6 @@ STUDENT
 
 ---
 
-## 📚 Documentation
-
-| Document | Purpose |
-|----------|---------|
-| [API.md](./docs/API.md) | Complete API reference |
-| [DATABASE.md](./docs/DATABASE.md) | Database schema details |
-| [ALGORITHM.md](./docs/ALGORITHM.md) | Scheduling algorithm details |
-| [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | Production deployment guide |
-| [CONTRIBUTING.md](./CONTRIBUTING.md) | Contributing guidelines |
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions! 

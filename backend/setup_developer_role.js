@@ -1,0 +1,48 @@
+const pool = require('./src/config/db');
+const bcrypt = require('bcryptjs');
+
+async function setupDeveloperRole() {
+  try {
+    console.log('Updating auth_users table to support developer role...\n');
+
+    // Drop the old constraint and add new one
+    await pool.query(`
+      ALTER TABLE auth_users 
+      DROP CONSTRAINT auth_users_role_check;
+    `);
+
+    await pool.query(`
+      ALTER TABLE auth_users 
+      ADD CONSTRAINT auth_users_role_check 
+      CHECK (role IN ('admin', 'professor', 'student', 'developer'));
+    `);
+
+    console.log('✅ Constraint updated\n');
+
+    // Hash the password
+    const password = 'developer123';
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // Insert or update developer user
+    const result = await pool.query(
+      `INSERT INTO auth_users (username, password_hash, role, reference_id, email, is_active)
+       VALUES ($1, $2, $3, $4, $5, true)
+       ON CONFLICT (username) DO UPDATE SET password_hash = $2, role = $3, is_active = true
+       RETURNING user_id, username, role, email, is_active`,
+      ['developer', passwordHash, 'developer', 0, 'developer@college.edu']
+    );
+
+    console.log('✅ Developer user created:\n');
+    console.table(result.rows[0]);
+    console.log('\n📋 Developer Panel Credentials:');
+    console.log('Username: developer');
+    console.log('Password: developer123');
+    
+    process.exit(0);
+  } catch (error) {
+    console.error('Error:', error.message);
+    process.exit(1);
+  }
+}
+
+setupDeveloperRole();

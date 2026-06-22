@@ -1,0 +1,44 @@
+# Python environment
+.venv/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Documentation/temp files
+*.md
+*.txt
+*.odf
+
+# Test files
+test_*.js
+test_*.py
+
+# Debug files
+debug_*.js
+diagnostic_*.js
+diagnose_*.js
+
+# Temporary fix scripts
+FIX_*.js
+FIX_*.sql
+fix_*.js
+fix_*.sql
+
+# Restore scripts
+RESTORE_*.js
+restore_*.js
+
+# Verification scripts
+verify_*.js
+
+# Check scripts
+check_*.js
+
+# SQL temporary scripts
+*.sql

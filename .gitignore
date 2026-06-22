@@ -42,3 +42,37 @@ check_*.js
 
 # SQL temporary scripts
 *.sql
+
+# Database files
+*.db
+
+# Test files
+test*
+*_test*
+
+# Debug / verification scripts
+debug_*
+diagnose*
+diagnostic*
+check_*
+verify_*
+
+# Fix / temporary scripts
+fix_*
+FIX_*
+clear_*
+complete_fix.js
+quick_*
+simple_*
+restore_*
+regenerate_*
+rebalance_*
+remove_duplicates.js
+
+# Reports
+FINAL_*
+*_REPORT.js
+*_ANALYSIS.js
+
+# Shell scripts
+*.sh
